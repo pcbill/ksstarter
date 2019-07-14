@@ -26,5 +26,5 @@ spring:
 #            hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
             hibernate.ddl-auto: create-drop #none
 
-liquibase:
-    contexts: dev
+    liquibase:
+        contexts: dev

@@ -22,26 +22,26 @@ spring:
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactor
             hibernate.ddl-auto: none
 
-liquibase:
-    contexts: prod
+    liquibase:
+        contexts: prod
 
-endpoints
-    enabled: false
-    info:
-        enabled: true
-    health:
-        enabled: true
-    metrics:
-        enabled: true
-    env:
-        enabled: true
-    loggers:
-        enabled: true
-    dump: #Thread
-        enabled: true
-    trace: #http
-        enabled: true
-    auditevents: #audit
-        enabled: true
-    logfile:
-        enabled: true
+    endpoints:
+        enabled: false
+        info:
+            enabled: true
+        health:
+            enabled: true
+        metrics:
+            enabled: true
+        env:
+            enabled: true
+        loggers:
+            enabled: true
+        dump: #Thread
+            enabled: true
+        trace: #http
+            enabled: true
+        auditevents: #audit
+            enabled: true
+        logfile:
+            enabled: true

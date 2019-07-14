@@ -19,13 +19,9 @@ The project template of Kotlin Spring Boot
 ### Local (develop) environment
 
 ```
-$ gradlew -Pwithout_security bootRun
+$ gradlew -Pdev -Pno_sec bootRun
 ```
 
 db viewer /h2-console
 
 ### Product environment
-
-```
-$ gradlew -Pprod bootRun
-```

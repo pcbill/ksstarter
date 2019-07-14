@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "tw.pcbill"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 val developmentOnly by configurations.creating
@@ -23,12 +23,27 @@ repositories {
 	mavenCentral()
 }
 
+
+
+var profiles = "prod"
+if (project.hasProperty("dev")) {
+	profiles = "dev"
+}
+
+tasks.bootRun {
+	args = arrayOf("--spring.profiles.active=" + profiles).toMutableList()
+}
+
+
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	if (!project.hasProperty("no_sec")) {
+		implementation("org.springframework.boot:spring-boot-starter-security")
+	}
 
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
@@ -40,9 +55,12 @@ dependencies {
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-	runtimeOnly("com.h2database:h2")
-	runtimeOnly("org.postgresql:postgresql")
-	
+	if (project.hasProperty("dev")) {
+		runtimeOnly("com.h2database:h2")
+	} else {
+		runtimeOnly("org.postgresql:postgresql")
+	}
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 }
